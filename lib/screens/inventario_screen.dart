@@ -40,36 +40,59 @@ class _InventarioScreenState extends State<InventarioScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Inventario")),
+      appBar: AppBar(
+        title: const Text("Inventario", style: TextStyle(fontWeight: FontWeight.bold)),
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
+      ),
       drawer: const Sidebar(),
-      body: ListView.builder(
-        itemCount: productos.length,
-        itemBuilder: (context, index) {
-          final producto = productos[index];
-          return ListTile(
-            title: Text(producto["nombre"]),
-            subtitle: Text("Cantidad: ${producto["cantidad"]} - Precio Venta: \$${producto["precioVenta"]}"),
-            trailing: const Icon(Icons.arrow_forward_ios),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DetallesProductoScreen(
-                    producto: producto,
-                    actualizarProducto: actualizarProducto,
-                    eliminarProducto: eliminarProducto,
-                  ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView.builder(
+          itemCount: productos.length,
+          itemBuilder: (context, index) {
+            final producto = productos[index];
+            return Card(
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: ListTile(
+                contentPadding: const EdgeInsets.all(12),
+                leading: Icon(
+                  producto["categoria"] == "Laptops" ? Icons.laptop : Icons.phone_android,
+                  color: Colors.blue,
+                  size: 32,
                 ),
-              );
-            },
-          );
-        },
+                title: Text(
+                  producto["nombre"],
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text("Cantidad: ${producto["cantidad"]} - Precio Venta: \$${producto["precioVenta"]}"),
+                trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DetallesProductoScreen(
+                        producto: producto,
+                        actualizarProducto: actualizarProducto,
+                        eliminarProducto: eliminarProducto,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            );
+          },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blue,
         onPressed: () {
           mostrarFormularioProducto(context, agregarProducto);
         },
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add, color: Colors.white),
       ),
     );
   }
