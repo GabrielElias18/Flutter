@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
+import 'screens/inventario_screen.dart'; // Importamos la pantalla de inventario
 
 void main() {
-  runApp(const MainApp());
+  runApp(const InventarioApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class InventarioApp extends StatelessWidget {
+  const InventarioApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+      home: InventarioScreen(), // Usamos el widget importado
     );
   }
 }
