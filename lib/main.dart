@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'screens/inventario_screen.dart'; // Importamos la pantalla de inventario
+import 'screens/login.dart';
+// Importamos la pantalla de inventario
 
 void main() {
   runApp(const InventarioApp());
@@ -11,7 +12,8 @@ class InventarioApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: InventarioScreen(), // Usamos el widget importado
+      debugShowCheckedModeBanner: false,
+      home: LoginScreen(), // Usamos el widget importado
     );
   }
 }

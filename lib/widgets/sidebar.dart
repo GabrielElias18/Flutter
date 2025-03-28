@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../screens/inventario_screen.dart';
 import '../screens/balance_screen.dart';
+import '../screens/login.dart';
 
 class Sidebar extends StatelessWidget {
   const Sidebar({super.key});
@@ -13,7 +14,10 @@ class Sidebar extends StatelessWidget {
         children: [
           const DrawerHeader(
             decoration: BoxDecoration(color: Colors.blue),
-            child: Text("Menú", style: TextStyle(color: Colors.white, fontSize: 24)),
+            child: Text(
+              "Menú",
+              style: TextStyle(color: Colors.white, fontSize: 24),
+            ),
           ),
           ListTile(
             leading: const Icon(Icons.inventory),
@@ -21,7 +25,9 @@ class Sidebar extends StatelessWidget {
             onTap: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const InventarioScreen()),
+                MaterialPageRoute(
+                  builder: (context) => const InventarioScreen(),
+                ),
               );
             },
           ),
@@ -35,9 +41,18 @@ class Sidebar extends StatelessWidget {
               );
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.exit_to_app),
+            title: const Text("Cerrar sesión"),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginScreen()),
+              );
+            },
+          ),
         ],
       ),
     );
   }
 }
-  
